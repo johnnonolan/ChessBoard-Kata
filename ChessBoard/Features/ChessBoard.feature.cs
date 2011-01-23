@@ -61,11 +61,11 @@ namespace ChessBoard.Features
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-testRunner.Given("I have A White Pawn at A8");
+testRunner.Given("I have a White Pawn at A8");
 #line 8
 testRunner.When("I try and move to A9");
 #line 9
-testRunner.Then("I should be warned of an illegal move message.");
+testRunner.Then("I should be warned of an illegal move message");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -80,9 +80,13 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
 testRunner.Given("I have a Black knight at G8");
 #line 13
-testRunner.When("I try and move to I7");
+testRunner.And("I have a White pawn at A1");
 #line 14
-testRunner.Then("I should be warned of an illegal move message.");
+testRunner.And("the pawn moves to A2");
+#line 15
+testRunner.When("I try and move to I7");
+#line 16
+testRunner.Then("I should be warned of an illegal move message");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -92,16 +96,18 @@ testRunner.Then("I should be warned of an illegal move message.");
         public virtual void PawnMovesLegally_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn moves legally.", ((string[])(null)));
-#line 16
-this.ScenarioSetup(scenarioInfo);
-#line 17
-testRunner.Given("I have A White Pawn at a7");
 #line 18
-testRunner.When("I try and move to a8");
+this.ScenarioSetup(scenarioInfo);
 #line 19
-testRunner.Then("I should be shown \"Pawn to A8\"");
+testRunner.Given("I have a White Pawn at A7");
 #line 20
-testRunner.And("Pawn should be at A8.");
+testRunner.And("I have a Black knight at G8");
+#line 21
+testRunner.When("I try and move to A8");
+#line 22
+testRunner.Then("I should be shown \"Pawn to A8\"");
+#line 23
+testRunner.And("Pawn should be at A8");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -111,16 +117,20 @@ testRunner.And("Pawn should be at A8.");
         public virtual void KnightMovesLegally()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Knight moves legally", ((string[])(null)));
-#line 22
-this.ScenarioSetup(scenarioInfo);
-#line 23
-testRunner.Given("I have a Black knight at G8");
-#line 24
-testRunner.When("I try and move to H6");
 #line 25
-testRunner.Then("I should be shown \"Knight to H6\"");
+this.ScenarioSetup(scenarioInfo);
 #line 26
-testRunner.And("Knight should be at H6.");
+testRunner.Given("I have a Black knight at G8");
+#line 27
+testRunner.And("I have a White Pawn at A1");
+#line 28
+testRunner.And("the pawn moves to A2");
+#line 29
+testRunner.When("I try and move to H6");
+#line 30
+testRunner.Then("I should be shown \"Knight to H6\"");
+#line 31
+testRunner.And("Knight should be at H6");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -130,45 +140,45 @@ testRunner.And("Knight should be at H6.");
         public virtual void PawnStartsOnHomeRow_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn Starts on home row.", ((string[])(null)));
-#line 33
-this.ScenarioSetup(scenarioInfo);
-#line 34
-testRunner.Given("the game has just started");
-#line 35
-testRunner.And("the Pawn is on B2");
-#line 36
-testRunner.And("the Knight is at G8");
-#line 37
-testRunner.When("I move to B3");
 #line 38
-testRunner.Then("I should be shown “Pawn to B3”");
+this.ScenarioSetup(scenarioInfo);
 #line 39
-testRunner.And("Pawn should be at B3.");
-#line 41
 testRunner.Given("the game has just started");
+#line 40
+testRunner.And("the Pawn is on B2");
+#line 41
+testRunner.And("the Knight is at G8");
 #line 42
-testRunner.And("the Pawn is on E2");
+testRunner.When("I move to B3");
 #line 43
-testRunner.And("the Knight is at G8");
+testRunner.Then("I should be shown “Pawn to B3”");
 #line 44
-testRunner.When("I move to E4");
-#line 45
-testRunner.Then("I should be shown “Pawn to E4”");
+testRunner.And("Pawn should be at B3");
 #line 46
-testRunner.And("Pawn should be at E4.");
+testRunner.Given("the game has just started");
+#line 47
+testRunner.And("the Pawn is on E2");
 #line 48
-testRunner.Given("the game has not just started");
-#line 49
-testRunner.And("the Pawn is on D2");
-#line 50
 testRunner.And("the Knight is at G8");
+#line 49
+testRunner.When("I move to E4");
+#line 50
+testRunner.Then("I should be shown \"Pawn to E4\"");
 #line 51
+testRunner.And("Pawn should be at E4");
+#line 53
+testRunner.Given("the game has not just started");
+#line 54
+testRunner.And("the Pawn is on D2");
+#line 55
+testRunner.And("the Knight is at G8");
+#line 56
 testRunner.When("I move to D4");
-#line 52
+#line 57
 testRunner.Then("I should be shown \"Pawn cannot move 2 spaces unless it in the first round and is " +
                     "on the home row.\"");
-#line 53
-testRunner.And("Pawn should be at D2.");
+#line 58
+testRunner.And("Pawn should be at D2");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -178,18 +188,18 @@ testRunner.And("Pawn should be at D2.");
         public virtual void PawnTriesTakingMoveWhenNothingToCapture()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn tries taking move when nothing to capture", ((string[])(null)));
-#line 55
-this.ScenarioSetup(scenarioInfo);
-#line 56
-testRunner.Given("the Pawn is on D7");
-#line 57
-testRunner.And("the Knight is at G8");
-#line 58
-testRunner.When("I move to C8");
-#line 59
-testRunner.Then("I should be shown “Pawn cannot diagonally unless it is capturing a piece.”");
 #line 60
-testRunner.And("Pawn should be at D7.");
+this.ScenarioSetup(scenarioInfo);
+#line 61
+testRunner.Given("I have a White Pawn at D7");
+#line 62
+testRunner.And("I have a Black knight at G8");
+#line 63
+testRunner.When("I move to C8");
+#line 64
+testRunner.Then("I should be shown \"Pawn cannot diagonally unless it is capturing a piece.\"");
+#line 65
+testRunner.And("Pawn should be at D7");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -199,16 +209,18 @@ testRunner.And("Pawn should be at D7.");
         public virtual void MovingTheKnightLegally()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Moving the knight legally", ((string[])(null)));
-#line 67
+#line 72
 this.ScenarioSetup(scenarioInfo);
-#line 68
-testRunner.Given("It is the knight’s turn");
-#line 69
-testRunner.And("the knight is at D4");
-#line 70
+#line 73
+testRunner.Given("I have a Black knight at D4");
+#line 74
+testRunner.And("I have a White pawn at A1");
+#line 75
+testRunner.And("the pawn moves to A2");
+#line 76
 testRunner.When("I move to F5");
-#line 71
-testRunner.Then("I should be shown “Knight to F5”");
+#line 77
+testRunner.Then("I should be shown \"Knight to F5\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -218,22 +230,20 @@ testRunner.Then("I should be shown “Knight to F5”");
         public virtual void PawnTakesTheKnight()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn Takes the Knight", ((string[])(null)));
-#line 78
-this.ScenarioSetup(scenarioInfo);
-#line 79
-testRunner.Given("It is the pawn’s turn.");
-#line 80
-testRunner.And("the pawn is at D3");
-#line 81
-testRunner.And("the knight is at C4");
-#line 82
-testRunner.When("the pawn moves to C4");
-#line 83
-testRunner.Then("the knight should be taken");
 #line 84
-testRunner.And("the pawn should be at C4");
+this.ScenarioSetup(scenarioInfo);
 #line 85
-testRunner.And("I should be shown. “Pawn takes Knight. Pawn wins”");
+testRunner.Given("I have a White Pawn at D3");
+#line 86
+testRunner.And("I have a Black knight at C4");
+#line 87
+testRunner.When("the pawn moves to C4");
+#line 88
+testRunner.Then("the knight should be taken");
+#line 89
+testRunner.And("the pawn should be at C4");
+#line 90
+testRunner.And("I should be shown \"Pawn takes Knight. Pawn wins\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -243,22 +253,20 @@ testRunner.And("I should be shown. “Pawn takes Knight. Pawn wins”");
         public virtual void PawnCollidesWithKnight_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn collides with Knight.", ((string[])(null)));
-#line 87
-this.ScenarioSetup(scenarioInfo);
-#line 88
-testRunner.Given("It is the pawn’s turn.");
-#line 89
-testRunner.And("the pawn is at C3");
-#line 90
-testRunner.And("the knight is at C4");
-#line 91
-testRunner.When("the pawn moves to C4");
 #line 92
-testRunner.Then("the knight should be At C4");
+this.ScenarioSetup(scenarioInfo);
 #line 93
-testRunner.And("the pawn should be at C3");
+testRunner.Given("I have a White Pawn at C3");
 #line 94
-testRunner.And("I should be shown. \"Pawn collides with Knight. Draw.\"");
+testRunner.And("I have a Black knight at C4");
+#line 95
+testRunner.When("the pawn moves to C4");
+#line 96
+testRunner.Then("the knight should be at C4");
+#line 97
+testRunner.And("the pawn should be at C3");
+#line 98
+testRunner.And("I should be shown \"Pawn collides with Knight. Draw\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
@@ -268,19 +276,19 @@ testRunner.And("I should be shown. \"Pawn collides with Knight. Draw.\"");
         public virtual void KnightTakesPawn_()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Knight takes Pawn.", ((string[])(null)));
-#line 96
-this.ScenarioSetup(scenarioInfo);
-#line 97
-testRunner.Given("it is the Knights turn");
-#line 98
-testRunner.And("the Pawn is at F7");
-#line 99
-testRunner.And("the Knight is at D6");
-#line 100
-testRunner.When("I move to F7");
 #line 101
-testRunner.Then("the pawn should be taken");
+this.ScenarioSetup(scenarioInfo);
 #line 102
+testRunner.Given("I have a Black knight at D6");
+#line 103
+testRunner.And("I have a White Pawn at F6");
+#line 104
+testRunner.And("the Pawn moves to F7");
+#line 105
+testRunner.When("I move to F7");
+#line 106
+testRunner.Then("the pawn should be taken");
+#line 107
 testRunner.And("I should be shown \"Knight takes Pawn. Knight Wins\"");
 #line hidden
             testRunner.CollectScenarioErrors();
