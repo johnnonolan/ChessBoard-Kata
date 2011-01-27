@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA2DCAA7-8886-443C-B7C4-11F390A45768}</ProjectGuid>
+    <ProjectGuid>{15BE570C-8252-45D8-8240-9660D0163A14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChessBoard</RootNamespace>
@@ -60,6 +60,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChessBoard.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\MovingTheKnight1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovingTheKnight.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\PawnMovesLegally1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PawnMovesLegally.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TakingAPiece1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TakingAPiece.feature</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="IPiece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +85,18 @@
     <None Include="Features\ChessBoard.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChessBoard.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\MovingTheKnight.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MovingTheKnight1.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PawnMovesLegally.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PawnMovesLegally1.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TakingAPiece.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>TakingAPiece1.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

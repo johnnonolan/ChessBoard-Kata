@@ -9,6 +9,7 @@ namespace ChessBoard
     public class Steps
     {
         Game _game;
+        string[] _validMoves;
 
 
         //TODO: unhappy path for knight and pawn
@@ -23,6 +24,12 @@ namespace ChessBoard
         public void GivenIHaveAWhitePawnAtA7(string location)
         {
             _game.SetWhitesStartLocation(location);
+        }
+
+        [Given(@"the valid moves are (.*)")]
+        public void GivenTheValidMovesAre(string validMoves)
+        {
+            _validMoves = validMoves.Split(',');
         }
 
 
@@ -42,13 +49,13 @@ namespace ChessBoard
 
         [Then(@"the pawn should be at (.*)")]
         [Then(@"Pawn should be at (.*)")]
-        public void ThenPawnShouldBeAtA8_(string location)
+        public void ThenPawnShouldBeAt(string location)
         {
             Assert.That(_game.WhitePawn.Location, Is.EqualTo(location));
         }
 
         [Then(@"the knight should be at (.*)")]
-        public void ThenTheKnightShouldBeAtC4(string location)
+        public void ThenTheKnightShouldBeAt(string location)
         {
             Assert.That(_game.BlackKnight.Location, Is.EqualTo(location));
         }
@@ -60,22 +67,14 @@ namespace ChessBoard
             Assert.That(_game.BlackKnight.Location, Is.EqualTo(location));
         }
 
-
-
-        [When(@"I move to (.*)")]
-        [When(@"I try and move to (.*)")]
+        [When(@"I move the Pawn to (.*)")]
+        [Given(@"I move the Pawn to (.*)")]
+        [Given(@"I move the Knight to (.*)")]
+        [When(@"I move the Knight to (.*)")]        
         public void WhenITryAndMoveToA8(string location)
         {
              _game.NextMove(location);
         }
-
-        [When(@"the [Pp]awn moves to (.*)")]
-        [Given(@"the [Pp]awn moves to (.*)")]
-        public void GivenThePawnMovesToA2(string location)
-        {
-            _game.NextMove(location);
-        }
-
 
         [Then(@"I should be shown ""(.*)""")]
         public void ThenIShouldBeShownPawnToA8(string message)
@@ -99,11 +98,14 @@ namespace ChessBoard
 
     public class Pawn : IPiece
     {
+        readonly IMovementRules _movementRules;
         public string Location { get; set; }
 
-        public Pawn(string location)
+        
+        public Pawn(string location, IMovementRules movementRules)
         {
-            Location = location;            
+            Location = location;
+            _movementRules = movementRules;
         }
 
         public void Move(string location)
@@ -118,12 +120,19 @@ namespace ChessBoard
 
     }
 
+    public interface IMovementRules
+    {
+        bool IsValidMove(string currentLocation, string newLocation);
+    }
+
     public class Knight : IPiece
     {
+        readonly IMovementRules _movementRules;
         public string Location { get; set; }
 
-        public Knight(string location)
+        public Knight(string location, IMovementRules movementRules )
         {
+            _movementRules = movementRules;
             Location = location;
         }
 
@@ -134,6 +143,7 @@ namespace ChessBoard
 
         public void Move(string location)
         {
+
             Location = location;
         }
     }

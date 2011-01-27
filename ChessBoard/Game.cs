@@ -25,7 +25,7 @@ namespace ChessBoard
 
         public void SetWhitesStartLocation(string location)
         {
-            WhitePawn = new Pawn(location);
+            WhitePawn = new Pawn(location, null);
         }
 
         public void NextMove(string location)
@@ -110,7 +110,38 @@ namespace ChessBoard
 
         public void SetBlacksStartLocation(string location)
         {
-            BlackKnight = new Knight( location);
+            BlackKnight = new Knight( location,new KnightMovementRules());
+        }
+    }
+
+    public class KnightMovementRules : IMovementRules
+    {
+        public bool IsValidMove(string currentLocation, string newLocation)
+        {
+            char currentRow = currentLocation[0];
+            int currentColumn = currentLocation[1];
+
+            char newRow = newLocation[0];
+            int newColumn = newLocation[1];
+
+            if (currentLocation == newLocation)
+                return false;
+            if (GetPosition(newRow) < 0)
+                return false;
+
+            if (GetPosition(newRow) > 8)
+                return false;
+
+            
+            if(GetPosition(newRow) - GetPosition(currentRow) > 2)
+                return false;
+
+            return true;
+        }
+
+        int GetPosition(char letter)
+        {
+            return letter - 'A' + 1;
         }
     }
 }
