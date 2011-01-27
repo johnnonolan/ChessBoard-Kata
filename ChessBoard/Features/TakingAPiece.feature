@@ -19,11 +19,10 @@ Then the knight should be at C4
 And the pawn should be at C3
 And I should be shown "Pawn collides with Knight. Draw"
 
-
 Scenario: Knight takes Pawn. 
 Given I have a Black knight at D6
 And I have a White Pawn at F6
 And the Pawn moves to F7
-When I move to F7
+When I move the Knight to F7
 Then the pawn should be taken 
 And I should be shown "Knight takes Pawn. Knight Wins"
