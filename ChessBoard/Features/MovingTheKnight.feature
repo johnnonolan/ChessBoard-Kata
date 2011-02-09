@@ -13,7 +13,16 @@ Then I should be shown "Knight to F5"
 
 Scenario Outline: Illegal Move
 Given I have a Black knight at D4
-And the valid moves are B3,B5,C2,C6,E2,E6,F3,F5
+And the valid moves are 
+|move|
+|B3|
+|B5|
+|C2|
+|C6|
+|E2|
+|E6|
+|F3|
+|F5|
 And I have a White pawn at A1
 And I move the Pawn to A2
 When I move the Knight to <Position>

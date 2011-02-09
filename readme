@@ -1,1 +1,19 @@
 This is an outline for a BDD Kata... its in beta now. so it probably sucks.
+
+Rules of the game.
+
+2 Pieces
+White Pawn
+Black Knight
+Placed anywhere on board
+Up to 2 rounds of moves
+Game is either won( a piece is taken)
+Or drawn
+
+Questionnaire
+
+1. When applying the scenarios did you think there was enough specification to fulfil the rules of the game?
+2. Did you make any design assumptions not in the game.
+3. How did you approach your design/Describe your design.
+4. Did you use any metaphors to construct the system.
+5. Did you feel that the specs lead you to design the system in a particular way?
