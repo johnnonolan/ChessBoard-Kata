@@ -27,14 +27,14 @@ And Pawn should be at D2
 
 Scenario: Pawn tries taking move when nothing to capture
 Given I have a White Pawn at D7
-And I have a Black knight at G8
+And I have a Black Knight at G8
 When I move the Pawn to C8
 Then I should be shown "Pawn cannot diagonally unless it is capturing a piece."
 And Pawn should be at D7
 
 Scenario Outline: Pawn moves illegally
 Given I have a White Pawn at D7
-And I have a Black knight at G8
+And I have a Black Knight at G8
 And the valid moves are D8
 When I move the Pawn to <Position>
 Then I should be shown "illegal move"
@@ -74,7 +74,6 @@ Scenarios: Positions
 |D5|
 |D6|
 |D7|
-|D8|
 |E1|
 |E2|
 |E3|

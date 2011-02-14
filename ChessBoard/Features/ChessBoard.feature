@@ -10,8 +10,8 @@ When I move the Pawn to A9
 Then I should be warned of an illegal move message
 
 Scenario: Knight heads off board
-Given I have a Black knight at G8
-And I have a White pawn at A1
+Given I have a Black Knight at G8
+And I have a White Pawn at A1
 And I move the Pawn to A2
 When I move the Knight to I7
 Then I should be warned of an illegal move message
