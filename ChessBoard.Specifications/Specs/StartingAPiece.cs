@@ -24,6 +24,7 @@ namespace ChessBoard.Specifications.Specs
         Because of = () => Exception = Catch.Exception(() => game.StartPawn("A1"));
 
         It should_not_throw = () => Exception.ShouldBeNull();
+        It should_be_at_A1 = ()=> game.PawnPosition.ShouldEqual("A1");
         static Exception Exception;
         static Game game;
     }
