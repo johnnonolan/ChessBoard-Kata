@@ -52,7 +52,7 @@ namespace ChessBoard
         bool TakingMovePattern(string to)
         {
             var verticalDistance = to[1] - Position[1];
-            var horizontalDistance = (int)to[0] - Position[0];
+            var horizontalDistance = to[0] - Position[0];
             return (Math.Abs(horizontalDistance) == 1) && (verticalDistance == 1);
         }
 

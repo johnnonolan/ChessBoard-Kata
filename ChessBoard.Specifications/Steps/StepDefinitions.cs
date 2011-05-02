@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace ChessBoard.Specifications.Steps
 {
     [Binding]
-    public class Step_definitions
+    public class StepDefinitions
     {
         Game _game;
-        List<string> _validMoves = new List<string>();
+        readonly List<string> _validMoves = new List<string>();
         
         [BeforeScenario]
         public void SetUpGame()

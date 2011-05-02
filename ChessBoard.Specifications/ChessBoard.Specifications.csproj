@@ -84,7 +84,7 @@
     <Compile Include="Specs\MovingTheKnightLegally.cs" />
     <Compile Include="Specs\MovingThePawnLegally.cs" />
     <Compile Include="Specs\StartingAPiece.cs" />
-    <Compile Include="Steps\Step_definitions.cs" />
+    <Compile Include="Steps\StepDefinitions.cs" />
     <Compile Include="Tests\KnightMovmentTests.cs" />
   </ItemGroup>
   <ItemGroup>

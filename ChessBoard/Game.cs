@@ -54,7 +54,6 @@ namespace ChessBoard
                 {
                     throw new InvalidOperationException("Illegal Move");
                 }
-                var originalPosition = PawnPosition;
                 _pawn.Move(to, _knight.Position);
                 if ((to == _knight.Position))
                 {
@@ -94,8 +93,7 @@ namespace ChessBoard
     }
 
     public interface IPiece
-    {
-        
+    {        
         void Move(string to, string opponentsPosition);
     }
 
