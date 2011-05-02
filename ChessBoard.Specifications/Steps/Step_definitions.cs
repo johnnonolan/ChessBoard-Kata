@@ -107,10 +107,9 @@ namespace ChessBoard.Specifications.Steps
         public void GivenTheGameHasNotJustStarted()
         {
             //note this needs knowledge of future steps (brittle). 
-            _game.StartPawn("D1");
-            _game.StartKnight("E7");
-            _game.MovePawn("D2");
-            _game.MoveKnight("G8");
+            _game = new Game("D1", "E7"); // this overload suminlated game started
+           //  _game.MovePawn("D2");
+           // _game.MoveKnight("G8");
         }
 
         [Then(@"the Pawn should be taken")]

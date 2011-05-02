@@ -8,7 +8,17 @@ namespace ChessBoard
         Knight _knight;
         Pawn _pawn;
         public string Message = "";
-       
+
+        public Game(string pawnPos, string knightPos)
+        {
+            _pawn = new Pawn(pawnPos);
+            _knight = new Knight(knightPos);
+        }
+
+        public Game()
+        {
+            
+        }
         public string PawnPosition
         {
             get { return _pawn.Position; }
@@ -22,13 +32,18 @@ namespace ChessBoard
 
         public void StartKnight(string startingPosition)
         {
-            _knight = new Knight(startingPosition);
-
+            if (_knight == null)
+                _knight = new Knight(startingPosition);
+            else
+                _knight.Move(startingPosition, "H10");
         }
 
         public void StartPawn(string startingPosition)
         {
-            _pawn = new Pawn(startingPosition);
+            if (_pawn == null)
+                _pawn = new Pawn(startingPosition);
+            else
+                _pawn.Move(startingPosition, "H10"); // dummy position to get this to work
         }
 
         public void MovePawn(string to)
