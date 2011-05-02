@@ -18,6 +18,7 @@ When I move the Pawn to E4
 Then I should be shown "Pawn to E4"
 And Pawn should be at E4
 
+Scenario: Pawn tries to two spaces when not starting on home row.
 Given the game has not just started
 And the Pawn is on D2
 And the Knight is at G8

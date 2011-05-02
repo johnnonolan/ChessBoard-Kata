@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Maths = System.Math;
 
 namespace ChessBoard
 {
@@ -9,7 +8,7 @@ namespace ChessBoard
         Knight _knight;
         Pawn _pawn;
         public string Message = "";
-
+       
         public string PawnPosition
         {
             get { return _pawn.Position; }
@@ -40,11 +39,9 @@ namespace ChessBoard
                 {
                     throw new InvalidOperationException("Illegal Move");
                 }
-
+                var originalPosition = PawnPosition;
                 _pawn.Move(to, _knight.Position);
-                if ((to == _knight.Position) && (to[0] == _knight.Position[0]))
-                    Message = "pawn collides with knight. draw";
-                else if ((to == _knight.Position) && (to[0] != _knight.Position[0]))
+                if ((to == _knight.Position))
                 {
                     _knight.SetTaken();
                     Message  =  "Pawn takes Knight. Pawn wins";
@@ -78,56 +75,6 @@ namespace ChessBoard
             {
                 Message = ex.Message;
             }                                                 
-        }
-    }
-
-    public class Knight : IPiece
-    {
-        public string Position { get;  set; }
-        
-
-        public Knight(string position)
-        {
-            Position = position;
-        }
-
-        public void Move(string to, string opponentsPosition)
-        {
-            if (!ValidMovePattern(to))
-                throw new InvalidOperationException("Illegal move");
-            Position = to;
-        }
-
-        bool ValidMovePattern(string to)
-        {
-            int verticalDistance = VerticalDistanceTo(to);
-            var validDistances = new[] {1, 2};
-            int horizontalDistance = HorizontalDistanceTo(to);
-            return (validDistances.Contains(verticalDistance)
-                && validDistances.Contains(horizontalDistance) 
-                && (verticalDistance != horizontalDistance)) ;
-            
-        }
-
-        int VerticalDistanceTo(string to)
-        {
-            
-            var fileTo = (int)(to[0]);
-            var fileFrom = (int) (Position[0]);
-            return Maths.Abs(fileFrom - fileTo);
-
-        }
-
-        int HorizontalDistanceTo(string to )
-        {
-            var rankTo = to[1];
-            var rankFrom = Position[1];
-            return Maths.Abs(rankFrom - rankTo);            
-        }
-
-        public void SetTaken()
-        {
-            Position = "Taken";
         }
     }
 

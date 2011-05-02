@@ -30,7 +30,6 @@ namespace ChessBoard.Specifications.Steps
 
         [Given(@"the Pawn is on (.*)")]
         [Given(@"I have a White Pawn at (.*)")]
-        
         public void GivenIHaveAWhitePawnAtA1(string position)
         {
             _game.StartPawn(position);
@@ -107,7 +106,11 @@ namespace ChessBoard.Specifications.Steps
         [Given(@"the game has not just started")]
         public void GivenTheGameHasNotJustStarted()
         {
-            ScenarioContext.Current.Pending();
+            //note this needs knowledge of future steps (brittle). 
+            _game.StartPawn("D1");
+            _game.StartKnight("E7");
+            _game.MovePawn("D2");
+            _game.MoveKnight("G8");
         }
 
         [Then(@"the Pawn should be taken")]

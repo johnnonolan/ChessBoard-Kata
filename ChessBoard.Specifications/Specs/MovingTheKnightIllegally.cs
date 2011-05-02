@@ -18,7 +18,7 @@ namespace ChessBoard.Specifications.Specs
             };
 
         Because of = () => game.MovePawn("I7");
-        It should_display_an_illegal_message = () => game.Message.ShouldEqual("Illegal move");
+        It should_display_an_illegal_message = () => game.Message.ShouldEqual("Illegal Move");
 
 
         static Game game;

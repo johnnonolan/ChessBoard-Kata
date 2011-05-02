@@ -83,18 +83,29 @@ testRunner.When("I move the Pawn to E4");
 testRunner.Then("I should be shown \"Pawn to E4\"");
 #line 19
 testRunner.And("Pawn should be at E4");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Pawn tries to two spaces when not starting on home row.")]
+        public virtual void PawnTriesToTwoSpacesWhenNotStartingOnHomeRow_()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn tries to two spaces when not starting on home row.", ((string[])(null)));
 #line 21
-testRunner.Given("the game has not just started");
+this.ScenarioSetup(scenarioInfo);
 #line 22
-testRunner.And("the Pawn is on D2");
+testRunner.Given("the game has not just started");
 #line 23
-testRunner.And("the Knight is at G8");
+testRunner.And("the Pawn is on D2");
 #line 24
-testRunner.When("I move the Pawn to D4");
+testRunner.And("the Knight is at G8");
 #line 25
+testRunner.When("I move the Pawn to D4");
+#line 26
 testRunner.Then("I should be shown \"Pawn cannot move 2 spaces unless it in the first round and is " +
                     "on the home row.\"");
-#line 26
+#line 27
 testRunner.And("Pawn should be at D2");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -105,17 +116,17 @@ testRunner.And("Pawn should be at D2");
         public virtual void PawnTriesTakingMoveWhenNothingToCapture()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn tries taking move when nothing to capture", ((string[])(null)));
-#line 28
-this.ScenarioSetup(scenarioInfo);
 #line 29
-testRunner.Given("I have a White Pawn at D7");
+this.ScenarioSetup(scenarioInfo);
 #line 30
-testRunner.And("I have a Black Knight at G8");
+testRunner.Given("I have a White Pawn at D7");
 #line 31
-testRunner.When("I move the Pawn to C8");
+testRunner.And("I have a Black Knight at G8");
 #line 32
-testRunner.Then("I should be shown \"Pawn cannot diagonally unless it is capturing a piece.\"");
+testRunner.When("I move the Pawn to C8");
 #line 33
+testRunner.Then("I should be shown \"Pawn cannot diagonally unless it is capturing a piece.\"");
+#line 34
 testRunner.And("Pawn should be at D7");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -188,19 +199,19 @@ testRunner.And("Pawn should be at D7");
         public virtual void PawnMovesIllegally(string position)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pawn moves illegally", ((string[])(null)));
-#line 35
-this.ScenarioSetup(scenarioInfo);
 #line 36
-testRunner.Given("I have a White Pawn at D7");
+this.ScenarioSetup(scenarioInfo);
 #line 37
-testRunner.And("I have a Black Knight at G8");
+testRunner.Given("I have a White Pawn at D7");
 #line 38
-testRunner.And("the valid moves are D8");
+testRunner.And("I have a Black Knight at G8");
 #line 39
-testRunner.When(string.Format("I move the Pawn to {0}", position));
+testRunner.And("the valid moves are D8");
 #line 40
-testRunner.Then("I should be shown \"illegal move\"");
+testRunner.When(string.Format("I move the Pawn to {0}", position));
 #line 41
+testRunner.Then("I should be shown \"illegal move\"");
+#line 42
 testRunner.And("Pawn should be at D7");
 #line hidden
             testRunner.CollectScenarioErrors();
